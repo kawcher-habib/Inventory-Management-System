@@ -11,6 +11,7 @@
     <!-- Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+
     <style>
         body {
             background-color: #f4f6f9;
@@ -62,7 +63,7 @@
             <a href="#"><i class="bi bi-truck"></i> Suppliers</a>
             <a href="#"><i class="bi bi-cart"></i> Orders</a>
             <a href="#"><i class="bi bi-people"></i> Customers</a>
-            <a href="#"><i class="bi bi-box-seam"></i> Stock</a>
+            <a href="{{ route('stocks.index') }}"><i class="bi bi-box-seam"></i> Stock</a>
             <a href="#"><i class="bi bi-bar-chart"></i> Reports</a>
             <a href="#"><i class="bi bi-gear"></i> Settings</a>
 
@@ -96,6 +97,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 </body>
 </html>
