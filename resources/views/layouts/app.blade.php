@@ -58,7 +58,7 @@
             <h4 class="text-center mb-4">Inventory</h4>
 
             <a href="#" title="Coming Soon"><i class="bi bi-speedometer2"></i> Dashboard</a>
-            <a href="#"><i class="bi bi-currency-dollar"></i> Sales</a>
+            <a href="{{route('sales.index')}}"><i class="bi bi-currency-dollar"></i> Sales</a>
             <a href="#" title="Coming Soon"><i class="bi bi-box"></i> Products</a>
             <a href="#" title="Coming Soon"><i class="bi bi-tags"></i> Categories</a>
             <a href="#" title="Coming Soon"><i class="bi bi-truck"></i> Suppliers</a>
@@ -99,6 +99,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+@yield('scripts')
 
 </body>
 </html>

@@ -6,13 +6,13 @@
 
         <!-- Title -->
         <div class="col-md-6">
-            <h4 class="mb-0">Product Stock List</h4>
+            <h4 class="mb-0">Sales List</h4>
         </div>
 
         <!-- Add Stock Button -->
         <div class="col-md-6 text-end">
-            <a href="{{ route('stocks.create') }}" class="btn btn-sm btn-success">
-                <i class="bi bi-box-seam"></i> Add Stock
+            <a href="{{ route('sales.create') }}" class="btn btn-sm btn-success">
+                <i class="bi bi-box-seam"></i> Add Sales
             </a>
         </div>
 
@@ -26,7 +26,6 @@
                 <th class="text-center">#</th>
                 <th>Product Name</th>
                 <th class="text-center">Quantity</th>
-                <th class="text-center">Opening Stock</th>
                 <th class="text-end">Unit Price</th>
                 <th class="text-end">Sales Price</th>
                 <th class="text-center">Status</th>
