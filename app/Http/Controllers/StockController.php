@@ -102,6 +102,7 @@ class StockController extends Controller
         $newStock->purchase_price = $request->input('price');
         $newStock->sell_price = $request->input('sales_price');
         $newStock->quantity = $request->input('quantity');
+        $newStock->opening_stock = $request->input('opening_stock');
         $newStock->status = $request->input('status');
 
         $newStock->save();

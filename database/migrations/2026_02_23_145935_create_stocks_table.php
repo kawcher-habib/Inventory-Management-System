@@ -17,6 +17,7 @@ return new class extends Migration
             $table->decimal('purchase_price', 10, 2)->nullable();
             $table->decimal('sell_price', 10, 2)->nullable();
             $table->integer('quantity')->nullable();
+            $table->integer('opening_stock')->nullable();
             $table->tinyInteger('status')->comment('0: Inactive, 1: Active')->nullable(); 
             $table->timestamps();
         });

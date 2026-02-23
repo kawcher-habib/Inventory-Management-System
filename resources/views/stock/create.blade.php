@@ -23,8 +23,8 @@
 
                     <!-- Product -->
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">Product</label>
-                        <select name="product_id" class="form-select">
+                        <label class="form-label">Product <span class="text-danger">*</span></label>
+                        <select name="product_id" class="form-select" required>
                             <option value="">Select Product</option>
 
                             <option value="Laptop">Laptop</option>
@@ -47,19 +47,25 @@
 
                     <!-- Quantity -->
                     <div class="col-md-4 mb-3">
-                        <label class="form-label">Quantity</label>
-                        <input type="number" name="quantity" class="form-control" placeholder="Enter quantity">
+                        <label class="form-label">Quantity <span class="text-danger">*</span></label>
+                        <input type="number" name="quantity" min="0" class="form-control" placeholder="Enter quantity" required>
                     </div>
 
                     <!-- Unit Price -->
                     <div class="col-md-4 mb-3">
-                        <label class="form-label">Unit Price</label>
-                        <input type="number" step="0.01" name="price" class="form-control" placeholder="Enter price">
+                        <label class="form-label">Unit Price <span class="text-danger">*</span></label>
+                        <input type="number" step="0.01" min="0" name="price" class="form-control" placeholder="Enter price" required>
                     </div>
                     <!-- Sales Price -->
                      <div class="col-md-4 mb-3">
-                        <label class="form-label">Sales Price</label>
-                        <input type="number" step="0.01" name="sales_price" class="form-control" placeholder="Enter sales price">
+                        <label class="form-label">Sales Price <span class="text-danger">*</span></label>
+                        <input type="number" step="0.01" min="0" name="sales_price" class="form-control" placeholder="Enter sales price" required>
+                    </div>
+
+                    <!-- Openign Stocl -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Opening Stock</label>
+                        <input type="number" name="opening_stock" min="0" class="form-control" placeholder="Enter opening stock">
                     </div>
                    
                     <!-- Date -->

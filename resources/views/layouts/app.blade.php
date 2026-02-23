@@ -57,15 +57,16 @@
 
             <h4 class="text-center mb-4">Inventory</h4>
 
-            <a href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
-            <a href="#"><i class="bi bi-box"></i> Products</a>
-            <a href="#"><i class="bi bi-tags"></i> Categories</a>
-            <a href="#"><i class="bi bi-truck"></i> Suppliers</a>
-            <a href="#"><i class="bi bi-cart"></i> Orders</a>
-            <a href="#"><i class="bi bi-people"></i> Customers</a>
+            <a href="#" title="Coming Soon"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="#"><i class="bi bi-currency-dollar"></i> Sales</a>
+            <a href="#" title="Coming Soon"><i class="bi bi-box"></i> Products</a>
+            <a href="#" title="Coming Soon"><i class="bi bi-tags"></i> Categories</a>
+            <a href="#" title="Coming Soon"><i class="bi bi-truck"></i> Suppliers</a>
+            <a href="#" title="Coming Soon"><i class="bi bi-cart"></i> Orders</a>
+            <a href="#" title="Coming Soon"><i class="bi bi-people"></i> Customers</a>
             <a href="{{ route('stocks.index') }}"><i class="bi bi-box-seam"></i> Stock</a>
-            <a href="#"><i class="bi bi-bar-chart"></i> Reports</a>
-            <a href="#"><i class="bi bi-gear"></i> Settings</a>
+            <a href="#" title="Coming Soon"><i class="bi bi-bar-chart"></i> Reports</a>
+            <a href="#" title="Coming Soon"><i class="bi bi-gear"></i> Settings</a>
 
         </div>
 
