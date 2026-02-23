@@ -33,7 +33,7 @@
             <!-- Product -->
             <!-- Here Show Product from Stock Table, we can change it to Product Table in future -->
             <div class="col-md-4 mb-3">
-                <label class="form-label">Product</label>
+                <label class="form-label">Product <span class="text-danger">*</span></label>
                 <select name="product_id" id="productSelect" class="form-select" required>
                     <option value="">Select Product</option>
                     @foreach($stockData as $product)
@@ -48,7 +48,7 @@
 
             <!-- Quantity -->
             <div class="col-md-2 mb-3">
-                <label class="form-label">Quantity</label>
+                <label class="form-label">Quantity <span class="text-danger">*</span></label>
                 <input type="number" name="quantity" id="quantity" class="form-control" min="1" value="" required>
             </div>
 
@@ -124,38 +124,49 @@
         const paidAmountInput = document.getElementById('paidAmount');
         const dueAmountInput = document.getElementById('dueAmount');
 
+        function getNumericValue(input) {
+            // Convert input to number, default 0
+            return Math.round(parseFloat(input?.value) || 0);
+        }
+
         function calculateSale() {
-            const unitPrice = parseFloat(unitPriceInput.value) || 0;
-            const quantity = parseInt(quantityInput.value) || 0;
-            const discount = parseFloat(discountInput.value) || 0;
-            const vatPercent = parseFloat(vatPercentInput.value) || 0;
-            const paidAmount = parseFloat(paidAmountInput.value) || 0;
+            const unitPrice = getNumericValue(unitPriceInput);
+            const quantity = parseInt(quantityInput?.value) || 0;
+            const discount = getNumericValue(discountInput); // optional
+            const vatPercent = getNumericValue(vatPercentInput);
+            const paidAmount = getNumericValue(paidAmountInput);
 
             let subtotal = unitPrice * quantity - discount;
-            const vatAmount = subtotal * (vatPercent / 100);
+            const vatAmount = Math.round(subtotal * (vatPercent / 100));
             const total = subtotal + vatAmount;
 
-            totalPriceInput.value = total.toFixed(2);
-            dueAmountInput.value = (total - paidAmount).toFixed(2);
+            if (totalPriceInput) totalPriceInput.value = total;
+            if (dueAmountInput) dueAmountInput.value = total - paidAmount;
         }
 
-        // Product change
+        // Product selection change
         if (productSelect) {
-            
             productSelect.addEventListener('change', function() {
                 const selected = productSelect.selectedOptions[0];
-                unitPriceInput.value = selected ? selected.dataset.unit : 0;
+                unitPriceInput.value = Math.round(selected?.dataset.unit) || 0;
                 calculateSale();
             });
+
+            // Initial calculation for first product
+            const firstOption = productSelect.selectedOptions[0];
+            if (firstOption) {
+                unitPriceInput.value = Math.round(firstOption.dataset.unit) || 0;
+                calculateSale();
+            }
         }
 
-        // Quantity, Discount, Paid change
-        if (quantityInput) quantityInput.addEventListener('input', calculateSale);
-        if (discountInput) discountInput.addEventListener('input', calculateSale);
-        if (vatPercentInput) vatPercentInput.addEventListener('input', calculateSale);
-        if (paidAmountInput) paidAmountInput.addEventListener('input', calculateSale);
+        // Listen to other inputs
+        quantityInput?.addEventListener('input', calculateSale);
+        discountInput?.addEventListener('input', calculateSale);
+        vatPercentInput?.addEventListener('input', calculateSale);
+        paidAmountInput?.addEventListener('input', calculateSale);
 
-        // Initial calculation
+        // Initial calculation on page load
         calculateSale();
     });
 </script>

@@ -63,7 +63,7 @@ class SalesController extends Controller
          *      Product fetching from Prodcut Table
          */
 
-        $stockData = Stock::latest()->get();
+        $stockData = Stock::where('status', 1)->get();
 
 
 
@@ -87,6 +87,12 @@ class SalesController extends Controller
                 ->with('error', 'You do not have permission to create stock.');
         }
 
+             Status codes:
+                    1 => Pending
+                    2 => In Progress
+                    3 => Completed  (Currently hardcoded, in future this will be handled via the 'Approve' //button by admin)
+
+
          */
 
         // dd($request->all());
@@ -95,8 +101,8 @@ class SalesController extends Controller
         $validation = Validator::make($request->all(), [
             'product_id'   => 'required',
             'quantity'     => 'required|numeric|min:0',
-            'price'        => 'required|numeric|min:0',
-            'sales_price'  => 'required|numeric|min:0',
+            'unit_price'        => 'required|numeric|min:0',
+
         ]);
 
         if ($validation->fails()) {
@@ -105,18 +111,23 @@ class SalesController extends Controller
                 ->withInput();
         }
 
-        $newStock = new Sales();
+        $newSales = new Sales();
         // $newStock->product_id = $request->input('product_id'); // 
-        $newStock->product_name = $request->input('product_id'); // For simplicity, using product name instead of ID
-        $newStock->purchase_price = $request->input('price');
-        $newStock->sell_price = $request->input('sales_price');
-        $newStock->quantity = $request->input('quantity');
-        $newStock->opening_stock = $request->input('opening_stock');
-        $newStock->status = $request->input('status');
+        $newSales->stock_id = $request->input('product_id'); // For simplicity, using product name instead of ID
+        $newSales->unit_price = $request->input('unit_price');
+        $newSales->quantity = $request->input('quantity');
+        $newSales->vat = $request->input('vat_percent');
+        $newSales->discount = $request->input('discount');
+        $newSales->total_price = $request->input('total_price');
+        $newSales->paid_amount = $request->input('paid_amount');
+        $newSales->due_amount = $request->input('due_amount');
+        $newSales->quantity = $request->input('quantity');
+        $newSales->status = 3; // 3 means 'Completed' for simplicity
 
-        $newStock->save();
 
-        return redirect()->route('stocks.index')->with('success', 'Stock created successfully.');
+        $newSales->save();
+
+        return redirect()->route('sales.index')->with('success', 'Sale created successfully.');
     }
 
     /**

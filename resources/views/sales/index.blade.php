@@ -25,8 +25,8 @@
                 <th>Product</th>
                 <th class="text-center">Quantity</th>
                 <th class="text-end">Unit Price</th>
-                <th class="text-end">Discount</th>
-                <th class="text-end">VAT</th>
+                <th class="text-center">Discount</th>
+                <th class="text-center">VAT</th>
                 <th class="text-end">Total Price</th>
                 <th class="text-end">Paid</th>
                 <th class="text-end">Due</th>
@@ -38,14 +38,14 @@
             @forelse($sales as $index => $sale)
             <tr>
                 <td class="text-center">{{ $index + 1 }}</td>
-                <td>{{ $sale->product->name ?? 'N/A' }}</td>
+                <td>{{ $sale->stock->product_name ?? 'N/A' }}</td>
                 <td class="text-center">{{ $sale->quantity }}</td>
-                <td class="text-end">{{ number_format($sale->unit_price, 2) }}</td>
-                <td class="text-end">{{ number_format($sale->discount, 2) }}</td>
-                <td class="text-end">{{ number_format($sale->vat, 2) }}</td>
-                <td class="text-end">{{ number_format($sale->total_price, 2) }}</td>
-                <td class="text-end">{{ number_format($sale->paid_amount, 2) }}</td>
-                <td class="text-end">{{ number_format($sale->due_amount, 2) }}</td>
+                <td class="text-end">{{ number_format($sale->unit_price) }}</td>
+                <td class="text-center">{{ number_format($sale->discount) }}</td>
+                <td class="text-center">{{ number_format($sale->vat) }}</td>
+                <td class="text-end">{{ number_format($sale->total_price) }}</td>
+                <td class="text-end">{{ number_format($sale->paid_amount) }}</td>
+                <td class="text-end">{{ number_format($sale->due_amount) }}</td>
                 <td class="text-center">
                     @if($sale->status == 3)
                     <span class="badge bg-success">Completed</span>
@@ -61,20 +61,20 @@
                 <td class="text-center">
 
                     <!-- View Sale -->
-                    <a href="{{ route('sales.show', $sale->id) }}" title="View Sale" class="btn btn-sm btn-success me-1">
+                    <a href="#" title="Coming Soon" class="btn btn-sm btn-success me-1">
                         <i class="bi bi-eye"></i>
                     </a>
 
                     <!-- Edit Sale -->
-                    <a href="{{ route('sales.edit', $sale->id) }}" title="Edit Sale" class="btn btn-sm btn-primary me-1">
+                    <a href="#" title="Coming Soon" class="btn btn-sm btn-primary me-1">
                         <i class="bi bi-pencil"></i>
                     </a>
 
                     <!-- Delete Sale -->
-                    <form action="{{ route('sales.destroy', $sale->id) }}" method="POST" class="d-inline">
+                    <form action="#" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-sm btn-danger" title="Delete Sale" onclick="return confirm('Are you sure to delete this sale?')">
+                        <button class="btn btn-sm btn-danger" title="Comming Soon" onclick="return confirm('Are you sure to delete this sale?')">
                             <i class="bi bi-trash"></i>
                         </button>
                     </form>
