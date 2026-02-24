@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JournalController;
 use App\Http\Controllers\SalesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StockController;
@@ -50,5 +51,18 @@ Route::prefix('sales')->group(function(){
     Route::get('/edit/{id}', [SalesController::class, 'edit'])->name('sales.edit');
     Route::post('/update/{id}', [SalesController::class, 'update'])->name('sales.update');
     Route::post('/delete/{id}', [SalesController::class, 'destroy'])->name('sales.destroy');   
+
+});
+
+
+/**
+ * Report Management
+ */
+
+Route::prefix('reports')->group(function(){
+
+    Route::get('/', [JournalController::class, 'index'])->name('reports.index');
+    Route::get('/financial', [JournalController::class, 'report'])->name('reports.financial');
+     
 
 });
