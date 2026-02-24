@@ -114,6 +114,15 @@ class SalesController extends Controller
                 ->withInput();
         }
 
+        $productIsAvailable = Stock::where('id', $request->product_id)
+            ->where('opening_stock', '>=', $request->quantity)
+            ->exists();
+
+        if (!$productIsAvailable) {
+            return redirect()->back()
+                ->with('error', 'Insufficient stock available.');
+        }
+
         DB::transaction(function () use ($request) {
             // 1. Save Sale
             $sale = Sales::create([

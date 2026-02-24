@@ -22,13 +22,13 @@ class JournalController extends Controller
         // Total Sales Amount (Final sale after VAT/discount)
         $totalSales = $query->sum('total_price');
 
-        // Total Paid by Customers
+        // Total Paid
         $totalPaid = $query->sum('paid_amount');
 
-        // Total Due from Customers
+        // Total Due
         $totalDue = $query->sum('due_amount');
 
-        // Total Unit Price Value (optional insight)
+        // Total Unit Price Value
         $totalUnitPrice = $query->sum('unit_price');
 
         // Profit (Simplified)
